@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
-import UserCard from "../component/UserCard";
+import { View } from "react-native";
+import UserCard from "../component/userCard/UserCard";
+import Count from "../component/Count/Count";
 
 export default function Index() {
   return (
@@ -7,6 +8,7 @@ export default function Index() {
       <UserCard name="Anna" profession="Developer" />
       <UserCard name="Oleh" profession="Designer" />
       <UserCard name="Iryna" profession="QA" />
+      <Count />
     </View>
   );
 }
