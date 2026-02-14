@@ -1,7 +1,12 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { useState } from "react";
 
-export default function UserCard({ name, profession }) {
+type UserCardProps = {
+  name: string;
+  profession: string;
+};
+
+export default function UserCard({ name, profession }: UserCardProps) {
   const [isActive, setIsActive] = useState(false);
 
   return (

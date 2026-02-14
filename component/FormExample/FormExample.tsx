@@ -1,9 +1,9 @@
-import { View, Text, TextInput, Pressable } from "react-native";
+import { View, Text, TextInput, Pressable, FlatList } from "react-native";
 import { useState } from "react";
 
 export default function FormExample() {
   const [name, setName] = useState("");
-  const [item, setItem] = useState([]);
+  const [item, setItem] = useState<string[]>([]);
   const [value, setValue] = useState("");
 
   const addItem = () => {
@@ -27,10 +27,12 @@ export default function FormExample() {
       <Pressable onPress={addItem}>
         <Text>Add</Text>
       </Pressable>
-
-      {item.map((item, index) => (
-        <Text key={index}>{item}</Text>
-      ))}
+      <FlatList
+        data={item}
+        keyExtractor={(_, index) => index.toString()}
+        renderItem={({ item }) => <Text>{item}</Text>}
+        ListEmptyComponent={<Text>No items yet</Text>}
+      />
     </View>
   );
 }
