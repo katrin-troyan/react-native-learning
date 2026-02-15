@@ -5,6 +5,7 @@ import UserCard from "../component/userCard/UserCard";
 import Count from "../component/Count/Count";
 import FormExample from "../component/FormExample/FormExample";
 import Timer from "../component/Timer/Timer";
+import AppButton from "../component/AppButton/AppButton";
 
 export default function Index() {
   return (
@@ -12,12 +13,12 @@ export default function Index() {
       <View>
         <Text style={styles.title}>Home Screen</Text>
 
-        <Pressable
+        <AppButton
+          title="Go to Details"
           style={styles.button}
           onPress={() => router.push("/details")}
-        >
-          <Text style={styles.buttonText}>Go to Details</Text>
-        </Pressable>
+        />
+
         <UserCard name="Anna" profession="Developer" />
         <UserCard name="Oleh" profession="Designer" />
         <UserCard name="Iryna" profession="QA" />

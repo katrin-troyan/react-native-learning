@@ -1,5 +1,6 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text } from "react-native";
 import { router, useLocalSearchParams } from "expo-router";
+import AppButton from "../component/AppButton/AppButton";
 
 export default function Details() {
   const { name } = useLocalSearchParams();
@@ -9,9 +10,7 @@ export default function Details() {
       <Text>Details Screen</Text>
       <Text>Name: {name}</Text>
 
-      <Pressable onPress={() => router.back()}>
-        <Text>Go back</Text>
-      </Pressable>
+      <AppButton title="Go back" onPress={() => router.back()} />
     </View>
   );
 }

@@ -1,5 +1,6 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useState } from "react";
+import AppButton from "../AppButton/AppButton";
 
 type UserCardProps = {
   name: string;
@@ -14,13 +15,10 @@ export default function UserCard({ name, profession }: UserCardProps) {
       <Text style={styles.name}>Name: {name}</Text>
       <Text style={styles.profession}>Profession:{profession}</Text>
 
-      <Pressable
-        onPress={() => {
-          setIsActive(!isActive);
-        }}
-      >
-        <Text>{isActive ? "Deactivate" : "Activate"}</Text>
-      </Pressable>
+      <AppButton
+        title={isActive ? "Deactivate" : "Activate"}
+        onPress={() => setIsActive(!isActive)}
+      />
       {isActive && <Text>Status: Active</Text>}
     </View>
   );

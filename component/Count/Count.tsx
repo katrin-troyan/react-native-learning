@@ -1,5 +1,6 @@
-import { View, Text, Pressable } from "react-native";
+import { View, Text } from "react-native";
 import { useState } from "react";
+import AppButton from "../AppButton/AppButton";
 
 export default function Count() {
   const [count, setCount] = useState(0);
@@ -8,6 +9,7 @@ export default function Count() {
   const add = () => {
     setCount(count + 1);
   };
+
   const minus = () => {
     setCount(count - 1);
   };
@@ -15,22 +17,18 @@ export default function Count() {
   return (
     <View>
       <View>
-        <Text>Count:{count}</Text>
-        <Pressable onPress={add}>
-          <Text>+</Text>
-        </Pressable>
-        <Pressable onPress={minus}>
-          <Text>-</Text>
-        </Pressable>
+        <Text>Count: {count}</Text>
+
+        <AppButton title="+" onPress={add} />
+        <AppButton title="-" onPress={minus} />
       </View>
+
       <View>
-        <Pressable
-          onPress={() => {
-            setIsVisible(!isVisible);
-          }}
-        >
-          <Text>Toggle text</Text>
-        </Pressable>
+        <AppButton
+          title="Toggle text"
+          onPress={() => setIsVisible(!isVisible)}
+        />
+
         {isVisible && <Text>Hello React Native</Text>}
       </View>
     </View>

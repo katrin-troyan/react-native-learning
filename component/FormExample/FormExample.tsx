@@ -1,5 +1,6 @@
-import { View, Text, TextInput, Pressable, FlatList } from "react-native";
+import { View, Text, TextInput, FlatList } from "react-native";
 import { useState } from "react";
+import AppButton from "../AppButton/AppButton";
 
 export default function FormExample() {
   const [name, setName] = useState("");
@@ -24,9 +25,8 @@ export default function FormExample() {
 
       <TextInput value={value} onChangeText={setValue} placeholder="Add item" />
 
-      <Pressable onPress={addItem}>
-        <Text>Add</Text>
-      </Pressable>
+      <AppButton title="Add" onPress={addItem} />
+
       <FlatList
         data={item}
         keyExtractor={(_, index) => index.toString()}
