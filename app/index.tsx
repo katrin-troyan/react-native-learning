@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { router } from "expo-router";
 import UserCard from "../component/userCard/UserCard";
@@ -15,8 +15,7 @@ export default function Index() {
 
         <AppButton
           title="Go to Details"
-          style={styles.button}
-          onPress={() => router.push("/details")}
+          onPress={() => router.push({ pathname: "/details" })}
         />
 
         <UserCard name="Anna" profession="Developer" />
@@ -44,10 +43,5 @@ const styles = StyleSheet.create({
     backgroundColor: "#4f46e5",
     padding: 12,
     borderRadius: 8,
-  },
-  buttonText: {
-    color: "#fff",
-    textAlign: "center",
-    fontWeight: "600",
   },
 });

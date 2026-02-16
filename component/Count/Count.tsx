@@ -20,7 +20,7 @@ export default function Count() {
         <Text>Count: {count}</Text>
 
         <AppButton title="+" onPress={add} />
-        <AppButton title="-" onPress={minus} />
+        <AppButton title="-" onPress={minus} disabled={count === 0} />
       </View>
 
       <View>

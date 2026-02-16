@@ -4,14 +4,14 @@ type AppButtonProps = {
   title: string;
   onPress: () => void;
   disabled?: boolean;
-  style?: ViewStyle;
+  variant?: "primary" | "danger";
 };
 
 export default function AppButton({
   title,
   onPress,
   disabled = false,
-  style,
+  variant,
 }: AppButtonProps) {
   return (
     <Pressable
@@ -19,9 +19,8 @@ export default function AppButton({
       disabled={disabled}
       style={({ pressed }) => [
         styles.button,
-        pressed && styles.pressed,
+        variant === "danger" && styles.danger,
         disabled && styles.disabled,
-        style,
       ]}
     >
       <Text style={styles.text}>{title}</Text>
@@ -45,5 +44,8 @@ const styles = StyleSheet.create({
   },
   disabled: {
     backgroundColor: "#9ca3af",
+  },
+  danger: {
+    backgroundColor: "#dc2626",
   },
 });

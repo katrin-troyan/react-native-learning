@@ -17,6 +17,7 @@ export default function UserCard({ name, profession }: UserCardProps) {
 
       <AppButton
         title={isActive ? "Deactivate" : "Activate"}
+        variant={isActive ? "danger" : "primary"}
         onPress={() => setIsActive(!isActive)}
       />
       {isActive && <Text>Status: Active</Text>}
