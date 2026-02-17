@@ -1,15 +1,21 @@
-import { View, Text, TextInput, FlatList } from "react-native";
 import { useState } from "react";
+import { FlatList, Text, TextInput, View } from "react-native";
 import AppButton from "../AppButton/AppButton";
+
+type Item = {
+  id: string;
+  title: string;
+};
 
 export default function FormExample() {
   const [name, setName] = useState("");
-  const [item, setItem] = useState<string[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [value, setValue] = useState("");
 
   const addItem = () => {
     if (!value.trim()) return;
-    setItem((prev) => [...prev, value]);
+
+    setItems((prev) => [...prev, { id: Date.now().toString(), title: value }]);
     setValue("");
   };
 
@@ -23,14 +29,19 @@ export default function FormExample() {
 
       <Text>Hello {name}</Text>
 
-      <TextInput value={value} onChangeText={setValue} placeholder="Add item" />
+      <TextInput
+        placeholder="Add item"
+        value={value}
+        onChangeText={setValue}
+        onSubmitEditing={addItem}
+      />
 
       <AppButton title="Add" onPress={addItem} />
 
       <FlatList
-        data={item}
-        keyExtractor={(_, index) => index.toString()}
-        renderItem={({ item }) => <Text>{item}</Text>}
+        data={items}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <Text>{item.title}</Text>}
         ListEmptyComponent={<Text>No items yet</Text>}
       />
     </View>
