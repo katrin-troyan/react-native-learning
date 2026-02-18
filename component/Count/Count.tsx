@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import AppButton from "../AppButton/AppButton";
 
 export default function Count() {
@@ -13,7 +13,9 @@ export default function Count() {
   const minus = () => {
     setCount(count - 1);
   };
-
+  useEffect(() => {
+    console.log("Count updated:", count);
+  }, [count]);
   return (
     <View>
       <View>

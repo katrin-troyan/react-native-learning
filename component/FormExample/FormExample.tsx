@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FlatList, Text, TextInput, View } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import AppButton from "../AppButton/AppButton";
 
 type Item = {
@@ -18,7 +19,14 @@ export default function FormExample() {
     setItems((prev) => [...prev, { id: Date.now().toString(), title: value }]);
     setValue("");
   };
-
+  const saveName = async () => {
+    await AsyncStorage.setItem("username", name);
+  };
+  useEffect(() => {
+    AsyncStorage.getItem("username").then((savedName) => {
+      if (savedName) setName(savedName);
+    });
+  }, []);
   return (
     <View>
       <TextInput
@@ -36,7 +44,7 @@ export default function FormExample() {
         onSubmitEditing={addItem}
       />
 
-      <AppButton title="Add" onPress={addItem} />
+      <AppButton title="Save Name" onPress={saveName} />
 
       <FlatList
         data={items}
