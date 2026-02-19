@@ -6,6 +6,7 @@ import Count from "../component/Count/Count";
 import FormExample from "../component/FormExample/FormExample";
 import Timer from "../component/Timer/Timer";
 import AppButton from "../component/AppButton/AppButton";
+import UsersList from "../component/UsersList/UsersList";
 
 export default function Index() {
   return (
@@ -21,6 +22,7 @@ export default function Index() {
         <UserCard name="Anna" profession="Developer" />
         <UserCard name="Oleh" profession="Designer" />
         <UserCard name="Iryna" profession="QA" />
+        <UsersList />
         <Count />
         <FormExample />
         <Timer />
