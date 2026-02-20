@@ -7,6 +7,7 @@ import FormExample from "../component/FormExample/FormExample";
 import Timer from "../component/Timer/Timer";
 import AppButton from "../component/AppButton/AppButton";
 import UsersList from "../component/UsersList/UsersList";
+import UsersListApi from "../component/Users/UsersListApi";
 
 export default function Index() {
   return (
@@ -26,6 +27,7 @@ export default function Index() {
         <Count />
         <FormExample />
         <Timer />
+        <UsersListApi />
       </View>
     </SafeAreaView>
   );
